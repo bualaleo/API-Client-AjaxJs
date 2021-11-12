@@ -1,0 +1,191 @@
+﻿@{ ViewData["Title"] = "Home Page"; Layout = "_LayoutAdmin"; }
+
+<div class="container-fluid p-3 text-black">
+    <div>
+        <h2 class="h3 mb-2 text-gray-800">Table Employee</h2>
+        <p>
+            <button type="button" class="btn btn-primary btn-sm" id="btnReg" data-toggle="modal" data-target="#mModal" onclick="clearForm();">+Add Employee</button>
+            <button type="button" class="btn btn-success btn-sm" onclick="eExcel();"><i class="fa fa-file-excel"> Excel</i></button>
+        </p>
+    </div>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3"></div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="tabelSW" class="table table-hover table-primary">
+                    <thead>
+                        <tr>
+                            <td>Nik</td>
+                            <td>FullName</td>
+                            <td>Phone</td>
+                            <td>Salary</td>
+                            <td>Email</td>
+                            <td>Gender</td>
+                            <td>Action</td>
+                        </tr>
+                    </thead>
+                    <tbody class="tbody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade bd-example-modal-lg" id="mModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Data Employee</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="EmployeeForm">
+                        <div class="form-group">
+                            <label for="NIK">NIK</label>
+                            <input type="text" class="form-control" id="NIK" name="nik" placeholder="NIK">
+                            <div class="invalid-feedback">
+                                NIK nya isi !!!
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="FirstName">First Name</label>
+                                <input type="text" class="form-control" id="FirstName" name="firstName" placeholder="First Name">
+                                <div class="invalid-tooltip">
+                                    First Name Harus diisi !!!
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="LastName">Last Name</label>
+                                <input type="text" class="form-control" id="LastName" name="lastName" placeholder="Last Name">
+                                <div class="invalid-tooltip">
+                                    Last Name Harus diisi !!!
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="Phone">Phone</label>
+                                <input type="number" class="form-control" id="Phone" name="phone" placeholder="08xxxxx">
+                                <div class="invalid-tooltip">
+                                    Nomor Telepon harus diisi !!!
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="BirthDate">BirthDate</label>
+                                <input type="date" class="form-control" id="BirthDate" name="birthDate" placeholder="BirthDate">
+                                <div class="invalid-tooltip">
+                                    Tanggal Lahir Harus diisi !!!
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="Salary">Salary</label>
+                                <div class="input-group mb-2 mr-sm-2">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">Rp.</div>
+                                    </div>
+                                    <input type="number" class="form-control" name="salary" id="Salary">
+                                    <div class="invalid-tooltip">
+                                        salary harus diisi !!!
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="Email">Email</label>
+                                <input type="text" class="form-control" name="email" id="Email">
+                                <div class="invalid-tooltip">
+                                    Email harus diisi !!!
+                                </div>
+                            </div>
+                            <div class="form-group col-md-2 was-validated">
+                                <label for="Gender">Gender</label>
+                                <select id="Gender" name="gender" class="custom-select mr-sm-2" required>
+                                    <option value="">Choose...</option>
+                                    <option value="0">Male</option>
+                                    <option value="1">Female</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Gender harus diisi !!!
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row" id="form-2">
+                            <div class="form-group col-md-6">
+                                <label for="Degree">Degree</label>
+                                <input type="text" class="form-control" name="degree" id="Degree">
+                                <div class="invalid-tooltip">
+                                    Degree harus diisi !!!
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="GPA">GPA</label>
+                                <input type="text" class="form-control" name="GPA" id="GPA">
+                                <div class="invalid-tooltip">
+                                    GPA harus diisi !!!
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row" id="form-3">
+                            <div class="form-group col-md-6">
+                                <label for="IdUniversitas">Universitas</label>
+                                <select id="IdUniversitas" name="university" class="custom-select mr-sm-2" required>
+                                    <option selected>Choose...</option>
+                                    <option value="1">Trisakti</option>
+                                    <option value="2">Telkom</option>
+                                </select>
+                                <div class="invalid-tooltip">
+                                    University harus diisi !!!
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="IdRole">Role</label>
+                                <select id="IdRole" name="role" class="custom-select mr-sm-2" required>
+                                    <option selected>Choose...</option>
+                                    <option value="1">Employee</option>
+                                    <option value="2">Manager</option>
+                                    <option value="2">Director</option>
+                                </select>
+                                <div class="invalid-tooltip">
+                                    Role harus diisi !!!
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="container" id="form-pass">
+                        <div class="row my-5">
+                            <div class="col-md-4">
+                                <div class="md-form">
+                                    <i class="fas fa-lock prefix"></i>
+                                    <input type="password" id="Password" class="form-control validate">
+                                    <label for="Password" data-error="wrong" data-success="right" style="width:200px;">Type your password</label>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+
+                                <div class="alert alert-warning password-alert" role="alert">
+                                    <ul>
+                                        <li class="requirements leng"><i class="fas fa-check green-text"></i><i class="fas fa-times red-text"></i> Your password must have at least 8 chars.</li>
+                                        <li class="requirements big-letter"><i class="fas fa-check green-text"></i><i class="fas fa-times red-text"></i> Your password must have at least 1 big letter.</li>
+                                        <li class="requirements num"><i class="fas fa-check green-text"></i><i class="fas fa-times red-text"></i> Your password must have at least 1 number.</li>
+                                        <li class="requirements special-char"><i class="fas fa-check green-text"></i><i class="fas fa-times red-text"></i> Your password must have at least 1 special char.</li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" id="btnAdd" form="EmployeeForm" @*onclick="return Add();*@">Add</button>
+                    <button type="button" class="btn btn-primary" id="btnUpdate" style=" display:none;" onclick="Update();">Update</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

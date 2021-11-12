@@ -1,0 +1,42 @@
+﻿@{ ViewData["Title"] = "Home Page"; Layout = "_LayoutAdmin"; }
+
+<div class="container-fluid">
+    <h2 class="h3 mb-2 text-gray-800">List Chart</h2>
+    <p></p>
+    <div class="row">
+        <div class="col-xl-8 col-lg-7">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Gender Employee</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-pie" id="gChart">
+                        <canvas></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Role Employee</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-pie" id="rChart">
+                        <canvas></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-lg-5">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Salary Employee</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-bar" id="sChart">
+                        <canvas></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

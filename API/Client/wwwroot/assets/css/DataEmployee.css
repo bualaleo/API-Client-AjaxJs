@@ -1,0 +1,18 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+.alert {
+    display: none;
+}
+
+.requirements {
+    list-style-type: none;
+}
+
+.wrong .fa-check {
+    display: none;
+}
+
+.good .fa-times {
+    display: none;
+}
